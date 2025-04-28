@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>PRO Portal — Candidate Reviewer</title>
 
-  <!-- PrimeUI theme -->
+
   <link rel="stylesheet"
         href="https://unpkg.com/primeui@5/themes/saga-blue/theme.css">
   <link rel="stylesheet"
@@ -12,15 +12,15 @@
   <link rel="stylesheet"
         href="https://unpkg.com/primeicons@7/primeicons.css">
 
-  <!-- Your custom stylesheet with rounded-card look -->
+ 
   <link rel="stylesheet" href="styles.css">
 
-  <!-- AngularJS + jQuery -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="https://unpkg.com/primeui@5/primeui.min.js"></script>
 
-  <!-- App scripts -->
+ 
   <script src="app/app.module.js"></script>
   <script src="app/api.service.js"></script>
   <script src="app/main.controller.js"></script>
@@ -31,10 +31,10 @@
 
     <h2 class="title">Candidate Screening Form</h2>
 
-    <!-- Top-level form -->
+    
     <form ng-controller="MainCtrl as vm" ng-submit="vm.evaluate()">
 
-      <!-- ───────── 1. Personal Information ───────── -->
+     
       <div class="section-block">
         <h4>1&nbsp;&nbsp;Personal Information</h4>
 
@@ -81,7 +81,7 @@
         </div>
       </div>
 
-      <!-- ───────── 2. Work Hours ───────── -->
+      
       <div class="section-block">
         <h4>2&nbsp;&nbsp;Work Hours</h4>
 
@@ -99,32 +99,8 @@
         </div>
       </div>
 
-      <!-- ───────── 3. Previous / Current PRA Attempts ───────── -->
-      <div class="section-block">
-        <h4>3&nbsp;&nbsp;Previous &amp; Current PRA Attempts</h4>
 
-        <div class="form-grid">
-          <div class="p-field">
-            <label>Written TDM?</label>
-            <select ng-model="vm.candidate.writtenTdm"
-                    ng-options="b.value as b.label for b in vm.boolOpts"></select>
-          </div>
-
-          <div class="p-field">
-            <label>Result TDM</label>
-            <select ng-model="vm.candidate.resultTdm"
-                    ng-options="v for v in ['','Pass','Fail']"></select>
-          </div>
-
-          <div class="p-field">
-            <label>Currently in PRA Elsewhere?</label>
-            <select ng-model="vm.candidate.currentPraOther"
-                    ng-options="b.value as b.label for b in vm.boolOpts"></select>
-          </div>
-        </div>
-      </div>
-
-      <!-- ───────── 4. Medical Education ───────── -->
+      
       <div class="section-block">
         <h4>4&nbsp;&nbsp;Medical Education</h4>
 
@@ -151,7 +127,7 @@
         </div>
       </div>
 
-      <!-- ───────── 5. English Proficiency ───────── -->
+     
       <div class="section-block">
         <h4>5&nbsp;&nbsp;English Proficiency</h4>
 
@@ -170,7 +146,7 @@
         </div>
       </div>
 
-      <!-- ───────── 8. Rotations ───────── -->
+      
       <div class="section-block">
         <h4>8&nbsp;&nbsp;Rotations</h4>
 
@@ -189,13 +165,13 @@
         </div>
       </div>
 
-      <!-- Submit button -->
+      
       <button type="submit"
               class="p-button p-button-primary p-mt-3" id="submitter">
         Evaluate
       </button>
 
-      <!-- Flag table (spans full width) -->
+      
       <div ng-if="vm.flags.length" class="section-block" style="margin-top:2rem;">
         <h3>Flags</h3>
         <table class="p-datatable p-component">
@@ -221,6 +197,11 @@
           </tbody>
         </table>
       </div>
+     
+       <div ng-if="!vm.flags.length && vm.success" style="margin-top:2rem;">
+        <button class="p-button p-button-success p-mt-3" disabled>Success: No Flags Found!</button>
+      </div>
+
 
     </form>
   </div>
