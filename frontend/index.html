@@ -36,7 +36,7 @@
 
      
       <div class="section-block">
-        <h4>1&nbsp;&nbsp;Personal Information</h4>
+        <h4>Personal Information</h4>
 
         <div class="form-grid">
           <div class="p-field">
@@ -83,7 +83,7 @@
 
       
       <div class="section-block">
-        <h4>2&nbsp;&nbsp;Work Hours</h4>
+        <h4>Work Hours</h4>
 
         <div class="form-grid">
           <div class="p-field">
@@ -102,7 +102,7 @@
 
       
       <div class="section-block">
-        <h4>4&nbsp;&nbsp;Medical Education</h4>
+        <h4>Medical Education</h4>
 
         <div class="form-grid">
           <div class="p-field">
@@ -129,7 +129,7 @@
 
      
       <div class="section-block">
-        <h4>5&nbsp;&nbsp;English Proficiency</h4>
+        <h4>English Proficiency</h4>
 
         <div class="form-grid">
           <div class="p-field">
@@ -148,7 +148,7 @@
 
       
       <div class="section-block">
-        <h4>8&nbsp;&nbsp;Rotations</h4>
+        <h4>Rotations</h4>
 
         <div class="form-grid">
           <div class="p-field">
@@ -192,7 +192,8 @@
                   {{f.severity}}
                 </span>
               </td>
-              <td><input type="checkbox" ng-model="f.acknowledged"></td>
+              <td><input type="checkbox" ng-model="f.acknowledged" ng-change="vm.overrideFlag()">
+              </td>
             </tr>
           </tbody>
         </table>

@@ -1,31 +1,31 @@
-/* ===========  Global layout  =========== */
+
 html,body { height: 100%; }
 body.layout {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background: #f3f6fa;     /* soft grey backdrop */
+  background: #f3f6fa;     
   font-family: "Segoe UI", Roboto, sans-serif;
   margin: 0;
   padding: 2rem;
 }
 
-/* ===========  Card wrapper  =========== */
+
 .card {
   width: 100%;
   max-width: 920px;
   background: #ffffff;
-  border-radius: 1.25rem;     /* big rounded corners */
+  border-radius: 1.25rem;     
   box-shadow: 0 4px 24px rgba(0,0,0,.06);
   padding: 2rem 2.5rem 3rem;
 }
 
-/* ===========  Typography  =========== */
+
 .title      { margin: 0 0 1.5rem; font-weight: 600; }
 h4          { margin: 2rem 0 .75rem; font-weight: 600; color:#0f5aad; }
 label       { font-weight: 500; color:#374151; }
 
-/* ===========  Grid form  =========== */
+
 .form-grid {
   display: grid;
   gap: 1rem 1.5rem;
@@ -37,7 +37,7 @@ label       { font-weight: 500; color:#374151; }
   flex-direction: column;
 }
 
-/* ===========  Inputs & selects  =========== */
+
 input[type="text"],
 input[type="email"],
 input[type="number"],
@@ -56,7 +56,7 @@ input:focus, select:focus {
   outline: none;
 }
 
-/* ===========  Button  =========== */
+
 .p-button-primary {
   border-radius: .75rem !important;
   font-weight: 600;
@@ -68,7 +68,7 @@ input:focus, select:focus {
   filter: brightness(1.05);
 }
 
-/* ===========  Flag table  =========== */
+
 table.p-datatable {
   border-collapse: separate;
   border-spacing: 0;
@@ -98,25 +98,25 @@ table.p-datatable td {
 .p-badge-danger  { background:#ff4d4f !important; }
 .p-badge-warning { background:#ffbe29 !important; color:#312e2e !important; }
 
-/* Zebra striping */
+
 table.p-datatable tbody tr:nth-child(even) td { background:#fafbfc; }
 
 
-/* ───── New section blocks ───── */
+
 .section-block {
     margin-top: 1.75rem;
     padding: 1.75rem 1.5rem 0.25rem;
     background: #f9fbfe;
     border: 1px solid #e5e7eb;
     border-radius: 1rem;
-    box-shadow: inset 0 0 0 9999px rgba(255,255,255,.2); /* subtle glaze */
+    box-shadow: inset 0 0 0 9999px rgba(255,255,255,.2); 
     padding-bottom: 40px;
   }
   
-  /* ensure first section sticks to card top without extra gap */
+  
   .section-block:first-of-type { margin-top: 0; }
   
-  /* keep grid inside each section */
+  
   .section-block .form-grid {
     display: grid;
     gap: 1rem 1.5rem;
@@ -131,13 +131,13 @@ table.p-datatable tbody tr:nth-child(even) td { background:#fafbfc; }
 }
 
 #submitter:hover {
-    background-color: #1367f8; /* Slightly darker blue on hover */
+    background-color: #1367f8; 
   }
 
 
-/* ─────────  Success alert  ───────── */
+
 .alert-success {
-    /* Span the full width of the grid row */
+    
     grid-column: 1 / -1;
   
     display: flex;
@@ -147,9 +147,9 @@ table.p-datatable tbody tr:nth-child(even) td { background:#fafbfc; }
     margin-top: 2rem;
     padding: 1rem 1.25rem;
   
-    border-left: 6px solid #22c55e;      /* green accent bar */
-    background: #ecfdf5;                 /* light green bg */
-    color: #065f46;                      /* dark green text */
+    border-left: 6px solid #22c55e;      
+    background: #ecfdf5;                 
+    color: #065f46;                     
   
     border-radius: 1rem;
     font-size: 1.05rem;
@@ -159,6 +159,6 @@ table.p-datatable tbody tr:nth-child(even) td { background:#fafbfc; }
   }
   
   .alert-success .pi {
-    font-size: 1.4rem;                   /* bigger check mark */
+    font-size: 1.4rem;                   
   }
   
