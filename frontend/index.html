@@ -198,8 +198,9 @@
         </table>
       </div>
      
-       <div ng-if="!vm.flags.length && vm.success" style="margin-top:2rem;">
-        <button class="p-button p-button-success p-mt-3" disabled>Success: No Flags Found!</button>
+      <div ng-if="vm.flags && vm.flags.length === 0 && vm.success" class="alert-success">
+        <i class="pi pi-check-circle"></i>
+        <span>Success&nbsp;&mdash;&nbsp;No Flags Found!</span>
       </div>
 
 
