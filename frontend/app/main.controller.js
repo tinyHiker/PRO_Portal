@@ -26,12 +26,10 @@ angular.module('proPortal')
         });
     };
 
-    // New function to handle override
+    
     vm.overrideFlag = function () {
-      // Keep only flags that are NOT acknowledged (unchecked)
+      
       vm.flags = vm.flags.filter(flag => !flag.acknowledged);
-
-      // If no flags remain, show success
       vm.success = vm.flags.length === 0;
     };
   }]);
