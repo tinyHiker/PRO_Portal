@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" ng-app="proPortal">
+<head>
+  <meta charset="utf-8" />
+  <title>PRO Portal — Candidate Reviewer</title>
+
+  <!-- PrimeUI theme -->
+  <link rel="stylesheet"
+        href="https://unpkg.com/primeui@5/themes/saga-blue/theme.css">
+  <link rel="stylesheet"
+        href="https://unpkg.com/primeui@5/primeui.min.css">
+  <link rel="stylesheet"
+        href="https://unpkg.com/primeicons@7/primeicons.css">
+
+  <!-- Your custom stylesheet with rounded-card look -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- AngularJS + jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://unpkg.com/primeui@5/primeui.min.js"></script>
+
+  <!-- App scripts -->
+  <script src="app/app.module.js"></script>
+  <script src="app/api.service.js"></script>
+  <script src="app/main.controller.js"></script>
+</head>
+
+<body class="layout">
+  <div class="card">
+
+    <h2 class="title">Candidate Screening Form</h2>
+
+    <!-- Top-level form -->
+    <form ng-controller="MainCtrl as vm" ng-submit="vm.evaluate()">
+
+      <!-- ───────── 1. Personal Information ───────── -->
+      <div class="section-block">
+        <h4>1&nbsp;&nbsp;Personal Information</h4>
+
+        <div class="form-grid">
+          <div class="p-field">
+            <label>First Name</label>
+            <input pInputText type="text" ng-model="vm.candidate.firstName" required>
+          </div>
+
+          <div class="p-field">
+            <label>Last Name</label>
+            <input pInputText type="text" ng-model="vm.candidate.lastName" required>
+          </div>
+
+          <div class="p-field">
+            <label>Email</label>
+            <input pInputText type="email" ng-model="vm.candidate.email" required>
+          </div>
+
+          <div class="p-field">
+            <label>Date&nbsp;of&nbsp;Birth</label>
+            <input type="date" ng-model="vm.candidate.dob" required>
+          </div>
+
+          <div class="p-field">
+            <label>Legal Status</label>
+            <select ng-model="vm.candidate.legalStatus" required
+                    ng-options="s for s in ['Permanent Resident','Canadian Citizen','Other Citizenship']">
+            </select>
+          </div>
+
+          <div class="p-field">
+            <label>Valid Driver’s Licence?</label>
+            <select ng-model="vm.candidate.hasLicence"
+                    ng-options="b.value as b.label for b in vm.boolOpts" required></select>
+          </div>
+
+          <div class="p-field">
+            <label>Licence Type</label>
+            <select ng-model="vm.candidate.licenceType"
+                    ng-options="t for t in ['Canadian','International']">
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ───────── 2. Work Hours ───────── -->
+      <div class="section-block">
+        <h4>2&nbsp;&nbsp;Work Hours</h4>
+
+        <div class="form-grid">
+          <div class="p-field">
+            <label>Total In-person Hours</label>
+            <input type="number" min="0" ng-model="vm.candidate.totalHours">
+          </div>
+
+          <div class="p-field">
+            <label>Meets Canadian Practice Criteria?</label>
+            <select ng-model="vm.candidate.meetsCanadianExperience"
+                    ng-options="b.value as b.label for b in vm.boolOpts"></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ───────── 3. Previous / Current PRA Attempts ───────── -->
+      <div class="section-block">
+        <h4>3&nbsp;&nbsp;Previous &amp; Current PRA Attempts</h4>
+
+        <div class="form-grid">
+          <div class="p-field">
+            <label>Written TDM?</label>
+            <select ng-model="vm.candidate.writtenTdm"
+                    ng-options="b.value as b.label for b in vm.boolOpts"></select>
+          </div>
+
+          <div class="p-field">
+            <label>Result TDM</label>
+            <select ng-model="vm.candidate.resultTdm"
+                    ng-options="v for v in ['','Pass','Fail']"></select>
+          </div>
+
+          <div class="p-field">
+            <label>Currently in PRA Elsewhere?</label>
+            <select ng-model="vm.candidate.currentPraOther"
+                    ng-options="b.value as b.label for b in vm.boolOpts"></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ───────── 4. Medical Education ───────── -->
+      <div class="section-block">
+        <h4>4&nbsp;&nbsp;Medical Education</h4>
+
+        <div class="form-grid">
+          <div class="p-field">
+            <label>Medical School / University</label>
+            <input pInputText type="text" ng-model="vm.candidate.medSchool">
+          </div>
+
+          <div class="p-field">
+            <label>Degree Program Name</label>
+            <input pInputText type="text" ng-model="vm.candidate.degreeProgram">
+          </div>
+
+          <div class="p-field">
+            <label>Year of Graduation</label>
+            <input type="number" ng-model="vm.candidate.gradYear">
+          </div>
+
+          <div class="p-field">
+            <label>Language of Education</label>
+            <input pInputText type="text" ng-model="vm.candidate.educLang">
+          </div>
+        </div>
+      </div>
+
+      <!-- ───────── 5. English Proficiency ───────── -->
+      <div class="section-block">
+        <h4>5&nbsp;&nbsp;English Proficiency</h4>
+
+        <div class="form-grid">
+          <div class="p-field">
+            <label>English Proficiency Exam?</label>
+            <select ng-model="vm.candidate.englishExam"
+                    ng-options="b.value as b.label for b in vm.boolOpts"></select>
+          </div>
+
+          <div class="p-field">
+            <label>Active Use of English?</label>
+            <select ng-model="vm.candidate.activeEnglish"
+                    ng-options="b.value as b.label for b in vm.boolOpts"></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ───────── 8. Rotations ───────── -->
+      <div class="section-block">
+        <h4>8&nbsp;&nbsp;Rotations</h4>
+
+        <div class="form-grid">
+          <div class="p-field">
+            <label>Completed 7 Rotations?</label>
+            <select ng-model="vm.candidate.rotationsCompleted"
+                    ng-options="b.value as b.label for b in vm.boolOpts"></select>
+          </div>
+
+          <div class="p-field">
+            <label>Impairment to Ability to Practise?</label>
+            <select ng-model="vm.candidate.impairment"
+                    ng-options="b.value as b.label for b in vm.boolOpts"></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit"
+              class="p-button p-button-primary p-mt-3" id="submitter">
+        Evaluate
+      </button>
+
+      <!-- Flag table (spans full width) -->
+      <div ng-if="vm.flags.length" class="section-block" style="margin-top:2rem;">
+        <h3>Flags</h3>
+        <table class="p-datatable p-component">
+          <thead>
+            <tr>
+              <th>Field</th><th>Message</th>
+              <th>Severity</th><th>Override</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="f in vm.flags">
+              <td>{{f.field}}</td>
+              <td>{{f.message}}</td>
+              <td>
+                <span class="p-badge"
+                      ng-class="{'p-badge-danger':f.severity==='error',
+                                 'p-badge-warning':f.severity==='warn'}">
+                  {{f.severity}}
+                </span>
+              </td>
+              <td><input type="checkbox" ng-model="f.acknowledged"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </form>
+  </div>
+</body>
+</html>
