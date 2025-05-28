@@ -5,7 +5,7 @@
 * **Ports** API → `3000` | UI → `5173`
 
 
-[Demo Video](https://example.com)
+[Demo Video](https://youtu.be/V49dZuZThrw)
 
 
 ## 💻 Local Setup Instructions
